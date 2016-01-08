@@ -166,7 +166,7 @@
                                     <rect key="frame" x="20" y="83" width="760" height="0.0"/>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickrImage" translatesAutoresizingMaskIntoConstraints="NO" id="3WX-G2-LJe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3WX-G2-LJe">
                                 <rect key="frame" x="153" y="141" width="293" height="391"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="293" id="Tn7-Ar-UwD"/>
@@ -262,6 +262,5 @@
     <resources>
         <image name="header_arrow" width="46" height="30"/>
         <image name="header_logo" width="696" height="88"/>
-        <image name="stickrImage" width="2500" height="3246"/>
     </resources>
 </document>

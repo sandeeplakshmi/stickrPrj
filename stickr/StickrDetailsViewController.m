@@ -7,6 +7,8 @@
 //
 
 #import "StickrDetailsViewController.h"
+#import "SVProgressHUD.h"
+#import "StickrNetworkAdapter.h"
 
 @interface StickrDetailsViewController ()
 
@@ -14,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *applyButton;
+@property (strong, nonatomic) StickrNetworkAdapter *nwAdapter;
 
 - (IBAction)backButtonClicked:(id)sender;
 - (IBAction)applyButtonClicked:(id)sender;
@@ -28,11 +31,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //Apply Border to Stickr Image
-    self.stickrImage.layer.borderColor = [UIColor lightGrayColor].CGColor;//[UIColor colorWithRed:211.0 green:211.0 blue:211.0 alpha:0].CGColor;
-    self.stickrImage.layer.borderWidth = 1.0;
-    
-    
     //Apply Broder to Apply Button
     self.applyButton.layer.borderColor = [UIColor colorWithRed:60.0/255.0 green:222.0/255.0 blue:148.0/255.0 alpha:1.0].CGColor;
     self.applyButton.layer.borderWidth = 1.0;
@@ -43,6 +41,40 @@
     //assign selected stickr title
     self.headerLabel.text = self.dataModel.stickrTitle;
     
+    //Load Image
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    _nwAdapter = [StickrNetworkAdapter new];
+    [_nwAdapter loadImage:self.stickrImage
+                withURL:[NSString stringWithFormat:@"api/v1/templates/%@.bmp",self.dataModel.stickrID]
+                  success:^(id response){
+    
+      [SVProgressHUD dismiss];
+      
+      //Apply Border to Stickr Image
+      self.stickrImage.layer.borderColor = [UIColor lightGrayColor].CGColor;//[UIColor colorWithRed:211.0 green:211.0 blue:211.0 alpha:0].CGColor;
+      self.stickrImage.layer.borderWidth = 1.0;
+                  
+    }failure:^(NSError *error){
+        
+        [SVProgressHUD dismiss];
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                        message:@"Unable to load Template Image. Please try again later."
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* OK_button = [UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES
+                                                                  completion:nil];
+                                        
+                                    }];
+        
+        [alert addAction:OK_button];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

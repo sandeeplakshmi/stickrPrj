@@ -9,11 +9,14 @@
 #import "ViewController.h"
 #import "StickrDetailsViewController.h"
 #import "stickrDataModel.h"
+#import "StickrNetworkAdapter.h"
+#import "SVProgressHUD.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *stickrDataArray;
+@property (strong, nonatomic) StickrNetworkAdapter *nwAdapter;
 
 @end
 
@@ -27,51 +30,34 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    _nwAdapter = [StickrNetworkAdapter new];
+    [_nwAdapter getPath:@"api/v1/templates" success:^(id response){
+        
+        [SVProgressHUD dismiss];
+        self.stickrDataArray = (NSMutableArray *)response;
+        [self.tableView reloadData];
+        
+    }failure:^(NSError *error){
     
-    self.stickrDataArray = [NSMutableArray new];
-    
-    stickrDataModel *dataM1 = [stickrDataModel new];
-    dataM1.stickrID = @"1";
-    dataM1.stickrTitle = @"Starbucks Daily Question";
-    dataM1.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM1];
-    
-    stickrDataModel *dataM2 = [stickrDataModel new];
-    dataM2.stickrID = @"2";
-    dataM2.stickrTitle = @"Hilton Room Stickr";
-    dataM2.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM2];
-    
-    stickrDataModel *dataM3 = [stickrDataModel new];
-    dataM3.stickrID = @"3";
-    dataM3.stickrTitle = @"AirBNB Recommendations";
-    dataM3.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM3];
-    
-    stickrDataModel *dataM4 = [stickrDataModel new];
-    dataM4.stickrID = @"4";
-    dataM4.stickrTitle = @"NYC Taxicab Headlines";
-    dataM4.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM4];
-    
-    stickrDataModel *dataM5 = [stickrDataModel new];
-    dataM5.stickrID = @"5";
-    dataM5.stickrTitle = @"Techcrunch Interview";
-    dataM5.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM5];
-    
-    stickrDataModel *dataM6 = [stickrDataModel new];
-    dataM6.stickrID = @"6";
-    dataM6.stickrTitle = @"GigaOHM Blog";
-    dataM6.stickrImageURL = @"";
-    
-    [self.stickrDataArray addObject:dataM6];
-    
+        [SVProgressHUD dismiss];
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                    message:@"Unable to load Titles. Please try again later."
+                                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* OK_button = [UIAlertAction actionWithTitle:@"OK"
+                                                  style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction * action)
+                                                 {
+                                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                                     
+                                                 }];
+        
+        [alert addAction:OK_button];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }];
+        
 }
 
 - (void)didReceiveMemoryWarning {

@@ -38,6 +38,10 @@
 		88D694711C4000FF00CFDBD9 /* BentonSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88D694691C4000FF00CFDBD9 /* BentonSans-Medium.otf */; settings = {ASSET_TAGS = (); }; };
 		88D694721C4000FF00CFDBD9 /* BentonSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88D6946A1C4000FF00CFDBD9 /* BentonSans-Regular.otf */; settings = {ASSET_TAGS = (); }; };
 		88D694731C4000FF00CFDBD9 /* BentonSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88D6946B1C4000FF00CFDBD9 /* BentonSans-Thin.otf */; settings = {ASSET_TAGS = (); }; };
+		88D6947C1C400CC700CFDBD9 /* StickrNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D6947B1C400CC700CFDBD9 /* StickrNetworkClient.m */; settings = {ASSET_TAGS = (); }; };
+		88D6947F1C400D8400CFDBD9 /* StickrNetworkAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D6947E1C400D8400CFDBD9 /* StickrNetworkAdapter.m */; settings = {ASSET_TAGS = (); }; };
+		88D694841C403A8400CFDBD9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88D694811C403A8400CFDBD9 /* SVProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
+		88D694851C403A8400CFDBD9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D694831C403A8400CFDBD9 /* SVProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,13 @@
 		88D694691C4000FF00CFDBD9 /* BentonSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Medium.otf"; sourceTree = "<group>"; };
 		88D6946A1C4000FF00CFDBD9 /* BentonSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Regular.otf"; sourceTree = "<group>"; };
 		88D6946B1C4000FF00CFDBD9 /* BentonSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Thin.otf"; sourceTree = "<group>"; };
+		88D6947A1C400CB900CFDBD9 /* StickrNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickrNetworkClient.h; sourceTree = "<group>"; };
+		88D6947B1C400CC700CFDBD9 /* StickrNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickrNetworkClient.m; sourceTree = "<group>"; };
+		88D6947D1C400D8400CFDBD9 /* StickrNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickrNetworkAdapter.h; sourceTree = "<group>"; };
+		88D6947E1C400D8400CFDBD9 /* StickrNetworkAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickrNetworkAdapter.m; sourceTree = "<group>"; };
+		88D694811C403A8400CFDBD9 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		88D694821C403A8400CFDBD9 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		88D694831C403A8400CFDBD9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +139,8 @@
 		88AE0F081C3AC24300B91F20 /* stickr */ = {
 			isa = PBXGroup;
 			children = (
+				88D694791C400CA200CFDBD9 /* Network Manager */,
 				88D694631C4000FF00CFDBD9 /* Fonts */,
-				88D694321C4000ED00CFDBD9 /* AFNetworking */,
 				88AE0F341C3BCB5A00B91F20 /* Models */,
 				88AE0F0C1C3AC24300B91F20 /* AppDelegate.h */,
 				88AE0F0D1C3AC24300B91F20 /* AppDelegate.m */,
@@ -146,6 +157,8 @@
 		88AE0F091C3AC24300B91F20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				88D694801C403A8400CFDBD9 /* SVProgressHUD */,
+				88D694321C4000ED00CFDBD9 /* AFNetworking */,
 				88AE0F151C3AC24300B91F20 /* Assets.xcassets */,
 				88AE0F1A1C3AC24300B91F20 /* Info.plist */,
 				88AE0F0A1C3AC24300B91F20 /* main.m */,
@@ -226,6 +239,27 @@
 			name = StoryBoards;
 			sourceTree = "<group>";
 		};
+		88D694791C400CA200CFDBD9 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				88D6947A1C400CB900CFDBD9 /* StickrNetworkClient.h */,
+				88D6947B1C400CC700CFDBD9 /* StickrNetworkClient.m */,
+				88D6947D1C400D8400CFDBD9 /* StickrNetworkAdapter.h */,
+				88D6947E1C400D8400CFDBD9 /* StickrNetworkAdapter.m */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		88D694801C403A8400CFDBD9 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				88D694811C403A8400CFDBD9 /* SVProgressHUD.bundle */,
+				88D694821C403A8400CFDBD9 /* SVProgressHUD.h */,
+				88D694831C403A8400CFDBD9 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,6 +324,7 @@
 				88D694721C4000FF00CFDBD9 /* BentonSans-Regular.otf in Resources */,
 				88D6946C1C4000FF00CFDBD9 /* BentonSans-Black.otf in Resources */,
 				88AE0F191C3AC24300B91F20 /* LaunchScreen.storyboard in Resources */,
+				88D694841C403A8400CFDBD9 /* SVProgressHUD.bundle in Resources */,
 				88D694701C4000FF00CFDBD9 /* BentonSans-Light.otf in Resources */,
 				88D6946F1C4000FF00CFDBD9 /* BentonSans-ExtraLight.otf in Resources */,
 				88AE0F161C3AC24300B91F20 /* Assets.xcassets in Resources */,
@@ -314,11 +349,14 @@
 				88AE0F371C3BCB8800B91F20 /* stickrDataModel.m in Sources */,
 				88D6945E1C4000ED00CFDBD9 /* UIButton+AFNetworking.m in Sources */,
 				88D6945D1C4000ED00CFDBD9 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				88D694851C403A8400CFDBD9 /* SVProgressHUD.m in Sources */,
+				88D6947C1C400CC700CFDBD9 /* StickrNetworkClient.m in Sources */,
 				88D6945B1C4000ED00CFDBD9 /* AFURLResponseSerialization.m in Sources */,
 				88D694611C4000ED00CFDBD9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				88D694621C4000ED00CFDBD9 /* UIWebView+AFNetworking.m in Sources */,
 				88D694541C4000ED00CFDBD9 /* AFAutoPurgingImageCache.m in Sources */,
 				88AE0F0E1C3AC24300B91F20 /* AppDelegate.m in Sources */,
+				88D6947F1C400D8400CFDBD9 /* StickrNetworkAdapter.m in Sources */,
 				88D694551C4000ED00CFDBD9 /* AFHTTPSessionManager.m in Sources */,
 				88AE0F0B1C3AC24300B91F20 /* main.m in Sources */,
 				88D694561C4000ED00CFDBD9 /* AFImageDownloader.m in Sources */,
