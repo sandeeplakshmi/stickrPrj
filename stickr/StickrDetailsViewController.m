@@ -45,12 +45,15 @@
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     
     _nwAdapter = [StickrNetworkAdapter new];
-    [_nwAdapter loadImage:self.stickrImage
-                withURL:[NSString stringWithFormat:@"api/v1/templates/%@.bmp",self.dataModel.stickrID]
-                  success:^(id response){
+    [_nwAdapter loadImageWithURL:[NSString stringWithFormat:@"api/v1/templates/%@.png",self.dataModel.stickrID]
+                andImageID:self.dataModel.stickrID
+                andImageView:(UIImageView *)self.stickrImage
+                success:^(id response){
     
       [SVProgressHUD dismiss];
       
+      //self.stickrImage.image = (UIImage *)response;
+                      
       //Apply Border to Stickr Image
       self.stickrImage.layer.borderColor = [UIColor lightGrayColor].CGColor;//[UIColor colorWithRed:211.0 green:211.0 blue:211.0 alpha:0].CGColor;
       self.stickrImage.layer.borderWidth = 1.0;

@@ -18,10 +18,11 @@ typedef void(^FailureBlock)(NSError*);
         success:(ResponseBlock)success
         failure:(FailureBlock)failure;
 
-- (void)loadImage:(UIImageView *)imageView
-          withURL:(NSString *)path
-          success:(ResponseBlock)success
-          failure:(FailureBlock)failure;
+- (void)loadImageWithURL:(NSString *)path
+        andImageID:(NSString*)templateID
+        andImageView:(UIImageView *)imageView
+        success:(ResponseBlock)success
+        failure:(FailureBlock)failure;
 
 
 - (void)postPath:(NSString *)path
